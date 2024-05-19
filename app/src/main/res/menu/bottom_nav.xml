@@ -3,7 +3,7 @@
 
     <item android:title="Search"
         android:id="@+id/searchMain"
-        android:icon="@drawable/ic_eye"
+        android:icon="@drawable/ic_search"
         />
     <item android:title="SavedCatche"
         android:id="@+id/savedCatche"

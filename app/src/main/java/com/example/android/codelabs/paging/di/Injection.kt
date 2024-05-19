@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.example.android.codelabs.paging
+package com.example.android.codelabs.paging.di
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import androidx.savedstate.SavedStateRegistryOwner
-import com.example.android.codelabs.paging.api.GithubService
+import com.example.android.codelabs.paging.data.api.GithubService
 import com.example.android.codelabs.paging.data.GithubRepository
 import com.example.android.codelabs.paging.data.db.RepoDatabase
 import com.example.android.codelabs.paging.ui.ViewModelFactory

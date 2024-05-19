@@ -21,6 +21,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.example.android.codelabs.paging.data.GithubRepository
+import com.example.android.codelabs.paging.ui.search.SearchRepositoriesViewModel
 
 /**
  * Factory for ViewModels

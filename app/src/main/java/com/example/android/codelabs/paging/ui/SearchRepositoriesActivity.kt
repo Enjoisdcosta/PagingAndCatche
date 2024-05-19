@@ -29,13 +29,18 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.example.android.codelabs.paging.Injection
 import com.example.android.codelabs.paging.R
+import com.example.android.codelabs.paging.di.Injection
 import com.example.android.codelabs.paging.databinding.ActivitySearchRepositoriesBinding
+import com.example.android.codelabs.paging.ui.repo.ReposAdapter
+import com.example.android.codelabs.paging.ui.repo.ReposLoadStateAdapter
+import com.example.android.codelabs.paging.ui.search.SearchRepositoriesViewModel
+import com.example.android.codelabs.paging.ui.search.UiAction
+import com.example.android.codelabs.paging.ui.search.UiModel
+import com.example.android.codelabs.paging.ui.search.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -46,18 +51,29 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SearchRepositoriesActivity : AppCompatActivity() {
 
+    lateinit var binding  : ActivitySearchRepositoriesBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivitySearchRepositoriesBinding.inflate(layoutInflater)
         val view = binding.root
-
         setContentView(binding.root)
 
-        //bottom Navigation
-//        val navHostFragment =
-//            supportFragmentManager.findFragmentById(R.id.searchMain) as NavHostFragment
-//        val navController = navHostFragment.navController
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.searchMain) as NavHostFragment
+
+        val navController = navHostFragment.navController
+
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.searchMain -> navController.navigate(R.id.searchMain)
+                R.id.savedCatche -> navController.navigate(R.id.savedCatche)
+                else -> {
+                }
+            }
+
+            true
+        }
 
 
         // get the view model
