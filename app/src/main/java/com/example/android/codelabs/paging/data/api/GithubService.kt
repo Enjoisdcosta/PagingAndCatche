@@ -43,7 +43,7 @@ interface GithubService {
 
     companion object {
         //private const val BASE_URL = "https://api.github.com/"
-
+// this should be in di for more MVVM
         fun create(): GithubService {
             val logger = HttpLoggingInterceptor()
             logger.level = Level.BASIC

@@ -23,13 +23,14 @@
     android:layout_height="wrap_content"
     android:paddingHorizontal="@dimen/row_item_margin_horizontal"
     android:paddingTop="@dimen/row_item_margin_vertical"
+    android:background="@color/colorPrimaryDark"
     tools:ignore="UnusedAttribute">
 
     <TextView
         android:id="@+id/repo_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/titleColor"
+        android:textColor="@color/black"
         android:textSize="@dimen/repo_name_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +43,9 @@
         android:layout_height="wrap_content"
         android:maxLines="10"
         android:paddingVertical="@dimen/row_item_margin_vertical"
-        android:textColor="?android:textColorPrimary"
+        android:textColor="@color/cardview_light_background"
         android:textSize="@dimen/repo_description_size"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/repo_name"
@@ -53,6 +55,8 @@
     <TextView
         android:id="@+id/repo_language"
         android:layout_width="0dp"
+        android:textColor="@color/cardview_light_background"
+
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:paddingVertical="@dimen/row_item_margin_vertical"
@@ -68,6 +72,7 @@
         android:layout_marginVertical="@dimen/row_item_margin_vertical"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_star"
+        android:outlineAmbientShadowColor="@color/cardview_light_background"
         app:layout_constraintEnd_toStartOf="@+id/repo_stars"
         app:layout_constraintBottom_toBottomOf="@+id/repo_stars"
         app:layout_constraintTop_toTopOf="@+id/repo_stars"
