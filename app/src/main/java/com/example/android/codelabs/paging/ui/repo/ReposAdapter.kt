@@ -21,7 +21,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.android.codelabs.paging.R
-import com.example.android.codelabs.paging.ui.SeparatorViewHolder
+import com.example.android.codelabs.paging.ui.view.SeparatorViewHolder
 import com.example.android.codelabs.paging.ui.search.UiModel
 
 /**

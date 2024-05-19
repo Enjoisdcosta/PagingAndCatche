@@ -9,7 +9,7 @@
         android:id="@+id/searchMain"
         android:name="com.example.android.codelabs.paging.ui.search.SavedSearchRepositoryFragment"
         android:label="People"
-        tools:layout="@layout/activity_search_repositories" >
+        tools:layout="@layout/fragment_saved_search_repository" >
 
         <action
             android:id="@+id/action_searchMain_to_savedCatche"

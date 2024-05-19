@@ -44,19 +44,19 @@ interface GithubService {
     companion object {
         //private const val BASE_URL = "https://api.github.com/"
 // this should be in di for more MVVM
-        fun create(): GithubService {
-            val logger = HttpLoggingInterceptor()
-            logger.level = Level.BASIC
-
-            val client = OkHttpClient.Builder()
-                .addInterceptor(logger)
-                .build()
-            return Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(GithubService::class.java)
-        }
+//        fun create(): GithubService {
+//            val logger = HttpLoggingInterceptor()
+//            logger.level = Level.BASIC
+//
+//            val client = OkHttpClient.Builder()
+//                .addInterceptor(logger)
+//                .build()
+//            return Retrofit.Builder()
+//                .baseUrl(BASE_URL)
+//                .client(client)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build()
+//                .create(GithubService::class.java)
+//        }
     }
 }

@@ -21,29 +21,57 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.savedstate.SavedStateRegistryOwner
 import com.example.android.codelabs.paging.data.api.GithubService
 import com.example.android.codelabs.paging.data.GithubRepository
+import com.example.android.codelabs.paging.data.api.APIDetails
 import com.example.android.codelabs.paging.data.db.RepoDatabase
-import com.example.android.codelabs.paging.ui.ViewModelFactory
+import com.example.android.codelabs.paging.ui.view.ViewModelFactory
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Class that handles object creation.
  * Like this, objects can be passed as parameters in the constructors and then replaced for
  * testing, where needed.
  */
+@Module
+@InstallIn(SingletonComponent::class)
 object Injection {
 
     /**
      * Creates an instance of [GithubRepository] based on the [GithubService] and a
      * [GithubLocalCache]
      */
+
     private fun provideGithubRepository(context: Context): GithubRepository {
-        return GithubRepository(GithubService.create(), RepoDatabase.getInstance(context))
+        return GithubRepository(create(), RepoDatabase.getInstance(context))
     }
 
     /**
      * Provides the [ViewModelProvider.Factory] that is then used to get a reference to
      * [ViewModel] objects.
      */
+    @Provides
     fun provideViewModelFactory(context: Context, owner: SavedStateRegistryOwner): ViewModelProvider.Factory {
         return ViewModelFactory(owner, provideGithubRepository(context))
+    }
+    @Provides
+    fun create(): GithubService {
+        val logger = HttpLoggingInterceptor()
+        logger.level = HttpLoggingInterceptor.Level.BASIC
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(logger)
+            .build()
+        return Retrofit.Builder()
+            .baseUrl(APIDetails.BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(GithubService::class.java)
     }
 }

@@ -32,6 +32,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.codelabs.paging.R
 import com.example.android.codelabs.paging.di.Injection
 import com.example.android.codelabs.paging.databinding.ActivitySearchRepositoriesBinding
+import com.example.android.codelabs.paging.ui.flowstate.RemotePresentationState
+import com.example.android.codelabs.paging.ui.flowstate.asRemotePresentationState
 import com.example.android.codelabs.paging.ui.repo.ReposAdapter
 import com.example.android.codelabs.paging.ui.repo.ReposLoadStateAdapter
 import com.example.android.codelabs.paging.ui.search.SearchRepositoriesViewModel
