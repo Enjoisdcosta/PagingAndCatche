@@ -1,5 +1,6 @@
 package com.example.android.codelabs.paging.ui.catche
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.android.codelabs.paging.R
 import com.example.android.codelabs.paging.databinding.ActivitySearchRepositoriesBinding
+import com.example.android.codelabs.paging.ui.test.TestActivity
 
 class SavedSearchCatcheFragment : Fragment() {
     lateinit var binding: ActivitySearchRepositoriesBinding
@@ -15,6 +17,8 @@ class SavedSearchCatcheFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val binding = ActivitySearchRepositoriesBinding.inflate(layoutInflater)
 
-    }
+        startActivity(Intent(activity, TestActivity::class.java))
 
-}
+        }
+
+    }
