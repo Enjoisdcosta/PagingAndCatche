@@ -24,12 +24,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.codelabs.paging.Injection
+import com.example.android.codelabs.paging.R
 import com.example.android.codelabs.paging.databinding.ActivitySearchRepositoriesBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -39,13 +42,23 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
+
+@AndroidEntryPoint
 class SearchRepositoriesActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivitySearchRepositoriesBinding.inflate(layoutInflater)
         val view = binding.root
-        setContentView(view)
+
+        setContentView(binding.root)
+
+        //bottom Navigation
+//        val navHostFragment =
+//            supportFragmentManager.findFragmentById(R.id.searchMain) as NavHostFragment
+//        val navController = navHostFragment.navController
+
 
         // get the view model
         val viewModel = ViewModelProvider(
@@ -66,6 +79,8 @@ class SearchRepositoriesActivity : AppCompatActivity() {
             pagingData = viewModel.pagingDataFlow,
             uiActions = viewModel.accept
         )
+
+
     }
 
     /**
