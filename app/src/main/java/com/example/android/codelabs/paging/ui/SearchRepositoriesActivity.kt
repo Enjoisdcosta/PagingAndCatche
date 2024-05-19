@@ -75,12 +75,12 @@ class SearchRepositoriesActivity : AppCompatActivity() {
                 else -> {
                 }
             }
-
             true
         }
 
 
         // get the view model
+
         val viewModel = ViewModelProvider(
             this, Injection.provideViewModelFactory(
                 context = this,
@@ -99,7 +99,6 @@ class SearchRepositoriesActivity : AppCompatActivity() {
             pagingData = viewModel.pagingDataFlow,
             uiActions = viewModel.accept
         )
-
 
     }
 
