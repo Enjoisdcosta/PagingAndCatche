@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.example.android.codelabs.paging.db
+package com.example.android.codelabs.paging.data.db
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.android.codelabs.paging.model.Repo
+import com.example.android.codelabs.paging.data.model.Repo
 
 @Dao
 interface RepoDao {
