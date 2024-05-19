@@ -10,8 +10,9 @@
         android:name="com.example.android.codelabs.paging.ui.search.SavedSearchRepositoryFragment"
         android:label="People"
         tools:layout="@layout/activity_search_repositories" >
+
         <action
-            android:id="@+id/action_disneyFragment_to_disneyDetailFragment"
+            android:id="@+id/action_searchMain_to_savedCatche"
             app:destination="@id/savedCatche" />
     </fragment>
 
@@ -20,8 +21,9 @@
         android:name="com.example.android.codelabs.paging.ui.catche.SavedSearchCatcheFragment"
         android:label="fragment_people_detail"
         tools:layout="@layout/fragment_saved_search_catche" >
+
         <action
-            android:id="@+id/action_disneyDetailFragment_to_disneyFragment"
+            android:id="@+id/action_savedCatche_to_searchMain"
             app:destination="@id/searchMain" />
     </fragment>
 
