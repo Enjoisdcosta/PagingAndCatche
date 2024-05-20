@@ -51,6 +51,8 @@ class GithubRemoteMediator(
     override suspend fun load(loadType: LoadType, state: PagingState<Int, Repo>): MediatorResult {
 
 
+
+// Checks to see if it is in the data base and if it is call from the data base and not the api
         val dataExists = isDataInDatabase(query)
         if (dataExists && loadType == LoadType.REFRESH) {
             Log.d("GithubRemoteMediator", "Data already exists in the database for query: $query, no need to fetch from network")
@@ -88,6 +90,7 @@ class GithubRemoteMediator(
                 }
                 nextKey
             }
+
         }
 
         val apiQuery = query + IN_QUALIFIER
@@ -118,6 +121,8 @@ class GithubRemoteMediator(
             return MediatorResult.Error(exception)
         }
     }
+
+
 
     private suspend fun isDataInDatabase(query: String): Boolean {
         val dbQuery = "%${query.replace(' ', '%')}%"

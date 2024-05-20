@@ -17,6 +17,7 @@
 package com.example.android.codelabs.paging.di
 
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.savedstate.SavedStateRegistryOwner
 import com.example.android.codelabs.paging.data.api.GithubService
@@ -27,6 +28,8 @@ import com.example.android.codelabs.paging.ui.view.ViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -76,5 +79,24 @@ object Injection {
     @Provides
     fun provideGithubRepository(context: Context): GithubRepository {
         return GithubRepository(create(), RepoDatabase.getInstance(context))
+    }
+
+
+    fun test(service: GithubService,
+             database: RepoDatabase): GithubRepository{
+        return GithubRepository(service,database)
+    }
+
+    @Provides
+    fun provideRepoDatabase(@ApplicationContext context: Context): RepoDatabase{
+        return RepoDatabase.getInstance(context)
+    }
+    @Module
+    @InstallIn(ActivityComponent::class)
+    class SavedStateModule {
+        @Provides
+        fun provideSavedStateRegistryOwner(activity: AppCompatActivity): SavedStateRegistryOwner {
+            return activity
+        }
     }
 }
