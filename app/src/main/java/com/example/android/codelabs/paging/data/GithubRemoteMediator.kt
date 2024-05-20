@@ -16,6 +16,7 @@
 
 package com.example.android.codelabs.paging.data
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -48,6 +49,13 @@ class GithubRemoteMediator(
     }
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, Repo>): MediatorResult {
+
+
+        val dataExists = isDataInDatabase(query)
+        if (dataExists && loadType == LoadType.REFRESH) {
+            Log.d("GithubRemoteMediator", "Data already exists in the database for query: $query, no need to fetch from network")
+            return MediatorResult.Success(endOfPaginationReached = true)
+        }
 
         val page = when (loadType) {
             LoadType.REFRESH -> {
@@ -109,6 +117,12 @@ class GithubRemoteMediator(
         } catch (exception: HttpException) {
             return MediatorResult.Error(exception)
         }
+    }
+
+    private suspend fun isDataInDatabase(query: String): Boolean {
+        val dbQuery = "%${query.replace(' ', '%')}%"
+        val repos = repoDatabase.reposDao().reposByNameSuspend(dbQuery)
+        return repos.isNotEmpty()
     }
 
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Repo>): RemoteKeys? {
