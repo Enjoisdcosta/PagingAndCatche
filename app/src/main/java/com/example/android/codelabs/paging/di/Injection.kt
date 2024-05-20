@@ -56,8 +56,7 @@ object Injection {
      * [ViewModel] objects.
      */
     @Provides
-    fun provideViewModelFactory(@ApplicationContext
-        context: Context,
+    fun provideViewModelFactory(@ApplicationContext context: Context,
         owner: SavedStateRegistryOwner
     ): ViewModelProvider.Factory {
         return ViewModelFactory(owner, provideGithubRepository(context))
@@ -80,30 +79,10 @@ object Injection {
     }
 
     @Provides
-    fun provideGithubRepository(context: Context): GithubRepository {
+    fun provideGithubRepository(@ApplicationContext context: Context): GithubRepository {
         return GithubRepository(create(), RepoDatabase.getInstance(context))
     }
 
 
-    @Provides
-    fun test(
-        service: GithubService,
-        database: RepoDatabase
-    ): GithubRepository {
-        return GithubRepository(service, database)
-    }
 
-    @Provides
-    fun provideRepoDatabase(@ApplicationContext context: Context): RepoDatabase {
-        return RepoDatabase.getInstance(context)
-    }
-
-    @Module
-    @InstallIn(ActivityComponent::class)
-    class SavedStateModule {
-        @Provides
-        fun provideSavedStateRegistryOwner(activity: AppCompatActivity): SavedStateRegistryOwner {
-            return activity
-        }
-    }
 }

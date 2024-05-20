@@ -26,6 +26,7 @@ import androidx.paging.map
 import com.example.android.codelabs.paging.data.repository.GithubRepository
 import com.example.android.codelabs.paging.data.model.Repo
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -46,8 +47,9 @@ import javax.inject.Inject
  * The ViewModel works with the [GithubRepository] to get the data.
  */
 
-
-class SearchRepositoriesViewModel  constructor(
+@OptIn(ExperimentalCoroutinesApi::class)
+@HiltViewModel
+class SearchRepositoriesViewModel @Inject constructor(
     private val repository: GithubRepository,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
