@@ -73,7 +73,8 @@ object Injection {
             .create(GithubService::class.java)
     }
 
-    private fun provideGithubRepository(context: Context): GithubRepository {
+    @Provides
+    fun provideGithubRepository(context: Context): GithubRepository {
         return GithubRepository(create(), RepoDatabase.getInstance(context))
     }
 }
