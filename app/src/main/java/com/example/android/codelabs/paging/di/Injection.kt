@@ -51,15 +51,18 @@ object Injection {
      */
 
 
-
     /**
      * Provides the [ViewModelProvider.Factory] that is then used to get a reference to
      * [ViewModel] objects.
      */
     @Provides
-    fun provideViewModelFactory(context: Context, owner: SavedStateRegistryOwner): ViewModelProvider.Factory {
+    fun provideViewModelFactory(@ApplicationContext
+        context: Context,
+        owner: SavedStateRegistryOwner
+    ): ViewModelProvider.Factory {
         return ViewModelFactory(owner, provideGithubRepository(context))
     }
+
     @Provides
     fun create(): GithubService {
         val logger = HttpLoggingInterceptor()
@@ -82,16 +85,19 @@ object Injection {
     }
 
 
-
-    fun test(service: GithubService,
-             database: RepoDatabase): GithubRepository{
-        return GithubRepository(service,database)
+    @Provides
+    fun test(
+        service: GithubService,
+        database: RepoDatabase
+    ): GithubRepository {
+        return GithubRepository(service, database)
     }
 
     @Provides
-    fun provideRepoDatabase(@ApplicationContext context: Context): RepoDatabase{
+    fun provideRepoDatabase(@ApplicationContext context: Context): RepoDatabase {
         return RepoDatabase.getInstance(context)
     }
+
     @Module
     @InstallIn(ActivityComponent::class)
     class SavedStateModule {
