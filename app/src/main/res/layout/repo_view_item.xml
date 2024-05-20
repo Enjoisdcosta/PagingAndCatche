@@ -73,6 +73,7 @@
         android:layout_marginVertical="@dimen/row_item_margin_vertical"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_star"
+        android:tint="@color/black"
         android:outlineAmbientShadowColor="@color/cardview_light_background"
         app:layout_constraintEnd_toStartOf="@+id/repo_stars"
         app:layout_constraintBottom_toBottomOf="@+id/repo_stars"
@@ -85,6 +86,7 @@
         android:layout_height="wrap_content"
         android:paddingVertical="@dimen/row_item_margin_vertical"
         android:textSize="@dimen/repo_description_size"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/forks"
         app:layout_constraintBaseline_toBaselineOf="@+id/repo_forks"
         tools:text="30"/>
@@ -106,6 +108,7 @@
         android:layout_height="wrap_content"
         android:paddingVertical="@dimen/row_item_margin_vertical"
         android:textSize="@dimen/repo_description_size"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/repo_description"
         tools:text="30"/>

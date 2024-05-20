@@ -65,7 +65,6 @@ class SearchRepositoriesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.searchMain) as NavHostFragment
-
         val navController = navHostFragment.navController
 
         binding.bottomNavigation.setOnItemSelectedListener {

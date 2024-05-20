@@ -52,6 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <EditText
             android:id="@+id/search_repo"
             android:layout_width="match_parent"
@@ -60,6 +61,7 @@
             android:imeOptions="actionSearch"
             android:inputType="textNoSuggestions"
             android:selectAllOnFocus="true"
+
             tools:text="Android"/>
     </com.google.android.material.textfield.TextInputLayout>
 
