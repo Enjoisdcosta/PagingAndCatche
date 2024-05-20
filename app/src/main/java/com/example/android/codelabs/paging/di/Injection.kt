@@ -20,7 +20,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import androidx.savedstate.SavedStateRegistryOwner
 import com.example.android.codelabs.paging.data.api.GithubService
-import com.example.android.codelabs.paging.data.GithubRepository
+import com.example.android.codelabs.paging.data.repository.GithubRepository
 import com.example.android.codelabs.paging.data.api.APIDetails
 import com.example.android.codelabs.paging.data.db.RepoDatabase
 import com.example.android.codelabs.paging.ui.view.ViewModelFactory
@@ -47,9 +47,7 @@ object Injection {
      * [GithubLocalCache]
      */
 
-    private fun provideGithubRepository(context: Context): GithubRepository {
-        return GithubRepository(create(), RepoDatabase.getInstance(context))
-    }
+
 
     /**
      * Provides the [ViewModelProvider.Factory] that is then used to get a reference to
@@ -73,5 +71,9 @@ object Injection {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(GithubService::class.java)
+    }
+
+    private fun provideGithubRepository(context: Context): GithubRepository {
+        return GithubRepository(create(), RepoDatabase.getInstance(context))
     }
 }

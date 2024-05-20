@@ -23,7 +23,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.insertSeparators
 import androidx.paging.map
-import com.example.android.codelabs.paging.data.GithubRepository
+import com.example.android.codelabs.paging.data.repository.GithubRepository
 import com.example.android.codelabs.paging.data.model.Repo
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
